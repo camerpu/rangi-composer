@@ -25,7 +25,7 @@ class Ranks
      * Return name of the server
      * @return string
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -60,7 +60,7 @@ class Ranks
      * @param string $steamid
      * @return string
      */
-    public static function forumLink(string $steamid) : string
+    public static function forumLink(string $steamid) : ?string
     {
         $pdo = DbInstance::createInstance('Forum');
 
@@ -82,7 +82,7 @@ class Ranks
      * @param int $number
      * @return array
      */
-    public function getTOP(int $number) : array
+    public function getTOP(int $number) : ?array
     {
         $pdo = DbInstance::createInstance(-1, $this->db_user, $this->db_password, $this->db_name);
 
@@ -111,7 +111,7 @@ class Ranks
      * @param $nick
      * @return array
      */
-    public function findByPlayer($nick) : array
+    public function findByPlayer($nick) : ?array
     {
         $nick = '%' . $nick . '%';
         $pdo = DbInstance::createInstance(-1, $this->db_user, $this->db_password, $this->db_name);
@@ -141,7 +141,7 @@ class Ranks
      * Listing servers for navbar
      * @return array
      */
-    public static function listServers() : array
+    public static function listServers() : ?array
     {
         $pdo = DbInstance::createInstance('System');
 

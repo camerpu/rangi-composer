@@ -78,7 +78,7 @@ class DbInstance extends PDO
      * @param string $type
      * @return string
      */
-    public function getType(string $type) : string
+    public function getType(string $type) : ?string
     {
         $path = NULL;
         switch($type)
