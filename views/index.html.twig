@@ -20,10 +20,10 @@
             {% for key, value in allServers %}
                 <li class="nav-item">
                     {% set active='' %}
-                    {% if get.id == server.id %}
+                    {% if get.id == value.id %}
                         {% set active='active' %}
                     {% endif %}
-                    <a class="nav-link {{ active }}" href="index.php?id={{ server.id }}">{{ server.name }}</a>
+                    <a class="nav-link {{ active }}" href="index.php?id={{ value.id }}">{{ value.name }}</a>
                 </li>
             {% endfor %}
         </ul>

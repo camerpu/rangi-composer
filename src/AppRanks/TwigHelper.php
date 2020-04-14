@@ -13,9 +13,9 @@ class TwigHelper
 {
     public static function getTwig()
     {
-        $loader = new FilesystemLoader('views/');
+        $loader = new FilesystemLoader('../views/');
         $twig = new Environment($loader, [
-            'cache' => 'page_cache/',
+            'cache' => '../page_cache/',
             'debug' => true,
         ]);;
         $twig->addExtension(new DebugExtension());

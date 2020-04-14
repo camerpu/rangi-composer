@@ -1,4 +1,5 @@
 <?php
+echo __DIR__ ;
 require '../vendor/autoload.php';
 use AppRanks\Db;
 use AppRanks\Ranks;

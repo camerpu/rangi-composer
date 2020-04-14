@@ -48,7 +48,7 @@ class DbInstance extends PDO
             }
 
 
-            require $_SERVER['DOCUMENT_ROOT'] . '/panelopiekuna/' . $path;
+            require  '../' . $path;
 
             try
             {
@@ -71,16 +71,16 @@ class DbInstance extends PDO
         switch($type)
         {
             case 'Forum':
-                $path = 'dbstorage/forum.php';
+                $path = 'config/forum.php';
                 break;
             case 'PO':
-                $path = 'dbstorage/panelopiekuna.php';
+                $path = 'config/panelopiekuna.php';
                 break;
             case 'System':
-                $path = 'dbstorage/systemflag.php';
+                $path = 'config/systemflag.php';
                 break;
             case 'SB':
-                $path = 'dbstorage/sourcebans.php';
+                $path = 'config/sourcebans.php';
                 break;
             default:
                 throw new Exception("Type doesn't exist");
