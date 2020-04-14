@@ -25,7 +25,6 @@ else
 $allServers = Ranks::listServers();
 $top = isset($_POST['nick']) ? $server->findByPlayer($_POST['nick']) : $server->getTOP(20);
 $twig = TwigHelper::getTwig();
-$twig->addGlobal('session', $_SESSION);
 $twig->addGlobal('get', $_GET);
 $twig->addGlobal('post', $_POST);
 
