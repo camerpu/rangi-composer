@@ -2,21 +2,39 @@
 
 namespace AppRanks;
 use \PDO;
-use AppRanks\DbInstance;
-
 
 class Ranks
 {
     private $id;
     private $name;
     private $db_user, $db_password, $db_name;
-    public function __construct($id)
+
+    /**
+     * Check if server exist and throwing Exception if not
+     * Ranks constructor.
+     * @param int $id
+     */
+    public function __construct(int $id)
     {
         $this->id = $id;
         if($this->tryLoad() == null)
             throw new Exception("Server doesn't exist");
     }
-    private function tryLoad()
+
+    /**
+     * Return name of the server
+     * @return string
+     */
+    public function getName() : string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Loading database data access for specific server
+     * @return int
+     */
+    private function tryLoad() : int
     {
         $pdo = DbInstance::createInstance('System');
 
@@ -37,7 +55,12 @@ class Ranks
             return null;
     }
 
-    public static function forumLink($steamid)
+    /**
+     * Return url to forum account
+     * @param string $steamid
+     * @return string
+     */
+    public static function forumLink(string $steamid) : string
     {
         $pdo = DbInstance::createInstance('Forum');
 
@@ -54,7 +77,12 @@ class Ranks
             return null;
     }
 
-    public function getTOP($number)
+    /**
+     * Return top players on the server
+     * @param int $number
+     * @return array
+     */
+    public function getTOP(int $number) : array
     {
         $pdo = DbInstance::createInstance(-1, $this->db_user, $this->db_password, $this->db_name);
 
@@ -78,12 +106,17 @@ class Ranks
         return $data;
     }
 
-    public function findByPlayer($nick)
+    /**
+     * Finding data by player Name
+     * @param $nick
+     * @return array
+     */
+    public function findByPlayer($nick) : array
     {
         $nick = '%' . $nick . '%';
         $pdo = DbInstance::createInstance(-1, $this->db_user, $this->db_password, $this->db_name);
 
-        $sth = $pdo->prepare("SELECT * FROM `rangi_nowe` WHERE `nick` LIKE :nick");
+        $sth = $pdo->prepare("SELECT * FROM `rangi_nowe` WHERE `nick` LIKE :nick LIMIT 50");
         $sth->bindParam(':nick', $nick, PDO::PARAM_STR);
         $sth->execute();
 
@@ -104,12 +137,11 @@ class Ranks
         return $data;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public static function listServers()
+    /**
+     * Listing servers for navbar
+     * @return array
+     */
+    public static function listServers() : array
     {
         $pdo = DbInstance::createInstance('System');
 
@@ -119,7 +151,10 @@ class Ranks
         $data = [];
         while($row = $sth->fetch())
         {
-            $data[] = ['id'=>$row['id'], 'name'=>$row['name']];
+            $data[] = [
+                'id'=>$row['id'],
+                'name'=>$row['name']
+            ];
         }
 
         $pdo = null;

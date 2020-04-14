@@ -11,7 +11,11 @@ use AppRanks\Ranks;
 
 class TwigHelper
 {
-    public static function getTwig()
+    /**
+     * Creating Twig Instantion
+     * @return Twig
+     */
+    public static function getTwig() : Environment
     {
         $loader = new FilesystemLoader('../views/');
         $twig = new Environment($loader, [

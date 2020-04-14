@@ -11,7 +11,15 @@ use \PDO;
 
 class DbInstance extends PDO
 {
-    public static function createInstance($type, $db_user=null, $db_password=null, $db_name=null)
+    /**
+     * Return PDO Instantion for specific type
+     * @param $type
+     * @param null $db_user
+     * @param null $db_password
+     * @param null $db_name
+     * @return PDO
+     */
+    public static function createInstance(string $type, string $db_user=null, string $db_password=null, string $db_name=null) : PDO
     {
         if($type == -1)
         {
@@ -65,7 +73,12 @@ class DbInstance extends PDO
         }
     }
 
-    public function getType($type)
+    /**
+     * Return path to database data
+     * @param string $type
+     * @return string
+     */
+    public function getType(string $type) : string
     {
         $path = NULL;
         switch($type)
