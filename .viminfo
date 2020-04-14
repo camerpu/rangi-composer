@@ -24,15 +24,27 @@
 # Registers:
 
 # File marks:
-'0  8  7  ~/.gitignore
-'1  5  6  ~/.gitignore
+'0  5  0  ~/composer.json
+'1  8  7  ~/.gitignore
+'2  5  6  ~/.gitignore
 
 # Jumplist (newest first):
+-'  5  0  ~/composer.json
+-'  1  0  ~/composer.json
+-'  8  7  ~/.gitignore
+-'  5  0  ~/.gitignore
+-'  1  0  ~/.gitignore
 -'  8  7  ~/.gitignore
 -'  5  0  ~/.gitignore
 -'  1  0  ~/.gitignore
 
 # History of marks within files (newest to oldest):
+
+> ~/composer.json
+	"	5	0
+	^	5	0
+	.	4	6
+	+	4	6
 
 > ~/.gitignore
 	"	8	7
